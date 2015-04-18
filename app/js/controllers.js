@@ -33,7 +33,7 @@ acmeSocialControllers.controller('AuthorDetailController',
                     });
                     var link = a[0].href; // posts api link
                     Page.setTitle(data.name);
-                    $scope.authorPosts = new AcmeSocialPaginator(data._links.posts, "posts");
+                    $scope.authorPosts = new AcmeSocialPaginator(link, "posts");
                     // force loading...
                     $scope.authorPosts.nextPage();
                 }).error(function(data, status, headers, config) {
