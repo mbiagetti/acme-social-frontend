@@ -24,12 +24,15 @@ acmeSocialApp.factory('AcmeSocialPaginator', function($http) {
             for (var i = 0; i < items.length; i++) {
                 this.items.push(items[i]);
             }
-            var pagination = data.pagination;
-            if (pagination.next)
+            // hasNext?
+            var a = data.pagination.links.filter(function (el) {
+                return el.rel == 'next';
+            });
+            if ( a[0] ) // true
             {
-                this.next=data.pagination.next;
+                this.next= a[0].href;
             }
-            else
+            else    // false
             {
                 this.end = true;
                 this.busy = false;

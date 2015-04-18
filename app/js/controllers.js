@@ -19,7 +19,12 @@ acmeSocialControllers.controller('AuthorDetailController',['$scope', '$location'
 
         $http.get(url).success(function(data) {
             $scope.authorDetail = data;
-            $scope.authorPosts = new AcmeSocialPaginator(data._links.posts, "posts");
+
+            var a = data.links.filter(function (el) {
+                return el.rel == 'posts';
+            });
+            var link = a[0].href; // posts api link
+            $scope.authorPosts = new AcmeSocialPaginator(link, "posts");
             // force loading...
             $scope.authorPosts.nextPage();
 
