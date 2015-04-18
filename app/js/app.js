@@ -1,9 +1,5 @@
 'use strict';
 
-var baseTweetUrl ="http://backend.localhost/app_dev.php/api/posts";
-
-var baseAuthorUrl ="http://backend.localhost/app_dev.php/api/authors";
-
 var acmeSocialApp = angular.module('acmeSocialApp', ['infinite-scroll','ngRoute','acmeSocialControllers']);
 
 acmeSocialApp.config(['$routeProvider',
@@ -29,3 +25,4 @@ acmeSocialApp.config(['$routeProvider',
                 redirectTo: '/home'
             });
     }]);
+

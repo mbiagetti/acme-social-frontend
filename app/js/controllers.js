@@ -1,21 +1,21 @@
 var acmeSocialControllers = angular.module('acmeSocialControllers', []);
 
 
-acmeSocialControllers.controller('HomeController',['$scope', 'AcmeSocialPaginator',  function($scope, AcmeSocialPaginator) {
-    $scope.social = new AcmeSocialPaginator(baseTweetUrl ,"posts");
+acmeSocialControllers.controller('HomeController',['$scope','ENDPOINT', 'AcmeSocialPaginator',  function($scope, ENDPOINT, AcmeSocialPaginator) {
+    $scope.social = new AcmeSocialPaginator(ENDPOINT.POSTS ,"posts");
 }]);
 
-acmeSocialControllers.controller('AuthorController',['$scope', 'AcmeSocialPaginator',  function($scope, AcmeSocialPaginator) {
-    $scope.author = new AcmeSocialPaginator(baseAuthorUrl,"authors");
+acmeSocialControllers.controller('AuthorController',['$scope', 'ENDPOINT', 'AcmeSocialPaginator',  function($scope, ENDPOINT, AcmeSocialPaginator) {
+    $scope.author = new AcmeSocialPaginator(ENDPOINT.AUTHORS,"authors");
 }]);
 
 acmeSocialControllers.controller('NotFoundController',['$scope',  function($scope) {
     $scope.error = "The requested resources was not found";
 }]);
 
-acmeSocialControllers.controller('AuthorDetailController',['$scope', '$location', '$routeParams','$http', 'AcmeSocialPaginator',  function($scope, $location, $routeParams, $http,  AcmeSocialPaginator) {
+acmeSocialControllers.controller('AuthorDetailController',['$scope', 'ENDPOINT', '$location', '$routeParams','$http', 'AcmeSocialPaginator',  function($scope, ENDPOINT, $location, $routeParams, $http,  AcmeSocialPaginator) {
 
-    var url = baseAuthorUrl+"/"+$routeParams.authorId;
+    var url = ENDPOINT.AUTHORS+"/"+$routeParams.authorId;
 
         $http.get(url).success(function(data) {
             $scope.authorDetail = data;
