@@ -1,0 +1,15 @@
+<br>
+<div class="col-md-2 col-sm-3 text-center">
+    <!--<a class="story-title" href="#"><img alt="{{item.author.name}}" src="{{item.author.profile_image_url}}" style="width:70px;height:70px" class="img-circle"></a>-->
+</div>
+<div class="col-md-10 col-sm-9">
+    <h3>{{item.text}}</h3>
+    <div class="row">
+        <div class="col-xs-9">
+            <h4><span ng-repeat='tag in item.tags'><a  class="label label-default" href="#">{{tag.name}}</a> </span></h4><h4>
+            <small style="font-family:courier,'new courier';" class="text-muted">{{item.date}}  • <a target="_blank" href="{{item._links.social}}" class="text-muted">Read More</a></small>
+        </h4></div>
+        <div class="col-xs-3"></div>
+    </div>
+    <br><br>
+</div>

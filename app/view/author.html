@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body" infinite-scroll='author.nextPage()' infinite-scroll-disabled='author.isScrollDisabled()' infinite-scroll-distance='1'>
+
+
+
+                    <!--/stories-->
+                    <div class="row" ng-repeat='item in author.items'>
+                        <social-author></social-author>
+                    </div>
+                    <hr>
+
+                    <!--/stories-->
+                    <span ng-if="author.end">
+                        <a href="" class="btn btn-primary">No More Data</a>
+                    </span>
+
+
+
+                </div>
+            </div>
+
+
+
+        </div><!--/col-12-->
+    </div>
+</div>
+

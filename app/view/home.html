@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                    <!--<span ng-if="social.error">-->
+                      <!--Error.-->
+                    <!--</span>-->
+                    <!--<span ng-if="!social.error">-->
+                      <!--No Error.-->
+                    <!--</span>-->
+
+                <div class="panel-body" infinite-scroll='social.nextPage()' infinite-scroll-disabled='social.isScrollDisabled()' infinite-scroll-distance='1'>
+
+
+
+                    <!--/stories-->
+                    <div class="row" ng-repeat='item in social.items'>
+                        <social-post></social-post>
+                    </div>
+                    <hr>
+
+                    <!--/stories-->
+                    <span ng-if="social.end">
+                        <a href="" class="btn btn-primary">No More Data</a>
+                    </span>
+
+
+                </div>
+            </div>
+        </div><!--/col-12-->
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="panel">
+                <br>
+                <div class="col-md-2 col-sm-3 text-center">
+                    <a class="story-title" href="#"><img alt="{{authorDetail.name}}" ng-src="{{authorDetail.profile_image_url}}" class="img-circle"></a>
+                </div>
+                <h4>{{authorDetail.screen_name}}</h4>
+                <h4>{{authorDetail.description}}</h4>
+                <small style="font-family:courier,'new courier';" class="text-muted">{{authorDetail.date}}  • <a target="_blank" href="{{authorDetail._links.social}}" class="text-muted">Read More on social</a></small>
+            </div>
+            </div>
+            <div class="panel">
+                <div class="panel-body" infinite-scroll='authorPosts.nextPage()' infinite-scroll-disabled='authorPosts.isScrollDisabled()' infinite-scroll-distance='1'>
+
+
+                    <!--/stories-->
+                    <div class="row" ng-repeat='item in authorPosts.items'>
+                        <social-post-without-author></social-post-without-author>
+                    </div>
+                    <hr>
+
+                    <!--/stories-->
+
+                    <span ng-if="authorPosts.end">
+                        <a href="" class="btn btn-primary">No More Data</a>
+                    </span>
+
+
+
+                </div>
+            </div>
+
+
+
+        </div><!--/col-12-->
+    </div>
+</div>

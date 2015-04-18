@@ -1,0 +1,42 @@
+// Service that encapsulate HTTP and pagination logic
+acmeSocialApp.factory('AcmeSocialPaginator', function($http) {
+    var AcmeSocialPaginator = function(url, elemNameAttribute) {
+        this.items = [];
+        this.busy = false;
+        this.end = false;
+
+        this.next = url;
+        this.elemNameAttribute = elemNameAttribute;
+    };
+
+    AcmeSocialPaginator.prototype.isScrollDisabled = function(){
+        return (this.busy || this.end);
+    };
+
+    AcmeSocialPaginator.prototype.nextPage = function() {
+        if (this.busy) return;
+        this.busy = true;
+
+        var url = this.next;
+        $http.get(url).error(function(data, status, headers, config) {
+        }).success(function(data) {
+            var items = data[this.elemNameAttribute];
+            for (var i = 0; i < items.length; i++) {
+                this.items.push(items[i]);
+            }
+            var pagination = data.pagination;
+            if (pagination.next)
+            {
+                this.next=data.pagination.next;
+            }
+            else
+            {
+                this.end = true;
+                this.busy = false;
+            }
+
+            this.busy = false;
+        }.bind(this));
+    };
+    return AcmeSocialPaginator;
+});
