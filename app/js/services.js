@@ -47,8 +47,11 @@ acmeSocialApp.factory('AcmeSocialPaginator', function($http) {
 // Service that encapsulate HTML Page stage
 acmeSocialApp.factory('Page', function(){
     var title = 'acme social';
+    var query = '';
     return {
         title: function() { return title; },
-        setTitle: function(newTitle) { title = newTitle; }
+        setTitle: function(newTitle) { title = newTitle; },
+        setQuery: function(newQuery) {query = newQuery; },
+        getQuery: function() { return query; }
     };
 });

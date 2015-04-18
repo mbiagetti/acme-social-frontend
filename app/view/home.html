@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -12,9 +13,8 @@
                 <div class="panel-body" infinite-scroll='social.nextPage()' infinite-scroll-disabled='social.isScrollDisabled()' infinite-scroll-distance='1'>
 
 
-
                     <!--/stories-->
-                    <div class="row" ng-repeat='item in social.items'>
+                    <div class="row" ng-repeat='item in social.items | filter:Page.query '>
                         <social-post></social-post>
                     </div>
                     <hr>
