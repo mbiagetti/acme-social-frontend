@@ -1,16 +1,22 @@
 var acmeSocialControllers = angular.module('acmeSocialControllers', []);
 
+acmeSocialControllers.controller('HomeController',
+    ['$scope','ENDPOINT', 'AcmeSocialPaginator',
+        function($scope, ENDPOINT, AcmeSocialPaginator) {
+            $scope.social = new AcmeSocialPaginator(ENDPOINT.POSTS , "posts");
 
-acmeSocialControllers.controller('HomeController',['$scope','ENDPOINT', 'AcmeSocialPaginator',  function($scope, ENDPOINT, AcmeSocialPaginator) {
-    $scope.social = new AcmeSocialPaginator(ENDPOINT.POSTS ,"posts");
 }]);
 
-acmeSocialControllers.controller('AuthorController',['$scope', 'ENDPOINT', 'AcmeSocialPaginator',  function($scope, ENDPOINT, AcmeSocialPaginator) {
-    $scope.author = new AcmeSocialPaginator(ENDPOINT.AUTHORS,"authors");
+acmeSocialControllers.controller('AuthorController',
+    ['$scope', 'ENDPOINT', 'AcmeSocialPaginator',
+        function($scope, ENDPOINT, AcmeSocialPaginator) {
+         $scope.author = new AcmeSocialPaginator(ENDPOINT.AUTHORS, "authors");
 }]);
 
-acmeSocialControllers.controller('NotFoundController',['$scope',  function($scope) {
-    $scope.error = "The requested resources was not found";
+acmeSocialControllers.controller('NotFoundController',
+    ['$scope',
+        function($scope) {
+            $scope.error = "The requested resources was not found";
 }]);
 
 acmeSocialControllers.controller('AuthorDetailController',['$scope', 'ENDPOINT', '$location', '$routeParams','$http', 'AcmeSocialPaginator',  function($scope, ENDPOINT, $location, $routeParams, $http,  AcmeSocialPaginator) {
@@ -19,12 +25,12 @@ acmeSocialControllers.controller('AuthorDetailController',['$scope', 'ENDPOINT',
 
         $http.get(url).success(function(data) {
             $scope.authorDetail = data;
-
             var a = data.links.filter(function (el) {
                 return el.rel == 'posts';
             });
             var link = a[0].href; // posts api link
-            $scope.authorPosts = new AcmeSocialPaginator(link, "posts");
+
+            $scope.authorPosts = new AcmeSocialPaginator(data._links.posts, "posts");
             // force loading...
             $scope.authorPosts.nextPage();
 
