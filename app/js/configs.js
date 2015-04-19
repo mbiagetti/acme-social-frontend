@@ -1,5 +1,5 @@
 acmeSocialApp
     .constant('ENDPOINT', {
-        POSTS :  "http://backend.localhost/app_dev.php/api/posts",
-        AUTHORS: "http://backend.localhost/app_dev.php/api/authors"
+        POSTS :  "http://fe.biagetti.info/api/posts",
+        AUTHORS: "http://fe.biagetti.info/api/authors"
     });
