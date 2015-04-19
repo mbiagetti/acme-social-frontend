@@ -4,6 +4,7 @@ acmeSocialControllers.controller('HomeController',
     ['$scope','ENDPOINT', 'AcmeSocialPaginator', 'Page',
         function($scope, ENDPOINT, AcmeSocialPaginator, Page) {
             Page.setTitle("Post Lists");
+            Page.setQuery("");
             $scope.social = new AcmeSocialPaginator(ENDPOINT.POSTS , "posts");
 
 }]);
@@ -12,6 +13,7 @@ acmeSocialControllers.controller('AuthorController',
     ['$scope', 'ENDPOINT', 'AcmeSocialPaginator', 'Page',
         function($scope, ENDPOINT, AcmeSocialPaginator, Page) {
             Page.setTitle("Author Lists");
+            Page.setQuery("");
             $scope.author = new AcmeSocialPaginator(ENDPOINT.AUTHORS, "authors");
 }]);
 
@@ -33,6 +35,7 @@ acmeSocialControllers.controller('AuthorDetailController',
                     });
                     var link = a[0].href; // posts api link
                     Page.setTitle(data.name);
+                    Page.setQuery("");
                     $scope.authorPosts = new AcmeSocialPaginator(link, "posts");
                     // force loading...
                     $scope.authorPosts.nextPage();

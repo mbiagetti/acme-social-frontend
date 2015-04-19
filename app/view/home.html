@@ -14,7 +14,7 @@
 
 
                     <!--/stories-->
-                    <div class="row" ng-repeat='item in social.items | filter:Page.query '>
+                    <div class="row" ng-repeat='item in social.items | filter:{text:Page.query} '>
                         <social-post></social-post>
                     </div>
                     <hr>

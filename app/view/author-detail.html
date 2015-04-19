@@ -18,7 +18,7 @@
 
 
                     <!--/stories-->
-                    <div class="row" ng-repeat='item in authorPosts.items'>
+                    <div class="row" ng-repeat='item in authorPosts.items | filter:{text:Page.query} '>
                         <social-post-without-author></social-post-without-author>
                     </div>
                     <hr>

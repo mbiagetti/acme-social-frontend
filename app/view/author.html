@@ -7,7 +7,7 @@
 
 
                     <!--/stories-->
-                    <div class="row" ng-repeat='item in author.items'>
+                    <div class="row" ng-repeat='item in author.items | filter:{name:Page.query} '>
                         <social-author></social-author>
                     </div>
                     <hr>
