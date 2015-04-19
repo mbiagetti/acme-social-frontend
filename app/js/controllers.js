@@ -44,6 +44,28 @@ acmeSocialControllers.controller('AuthorDetailController',
                 });
 }]);
 
+acmeSocialControllers.controller('TagDetailController',
+    ['$scope', 'ENDPOINT', '$location', '$routeParams','$http', 'AcmeSocialPaginator', 'Page',
+        function($scope, ENDPOINT, $location, $routeParams, $http,  AcmeSocialPaginator, Page) {
+            var url = ENDPOINT.TAGS+"/"+$routeParams.tagId;
+            $http.get(url)
+                .success(function(data) {
+                    $scope.tagDetail = data;
+                    var a = data.links.filter(function (el) {
+                        return el.rel == 'posts';
+                    });
+                    var link = a[0].href; // posts api link
+                    Page.setTitle("Tag: "+ data.name);
+                    Page.setQuery("");
+                    $scope.tagPosts = new AcmeSocialPaginator(link, "posts");
+                    // force loading...
+                    $scope.tagPosts.nextPage();
+                }).error(function(data, status, headers, config) {
+                    $location.url('/404');
+                });
+        }]);
+
+
 acmeSocialControllers.controller('MainController',
     ['$scope','Page',
         function($scope, Page) {

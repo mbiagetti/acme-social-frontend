@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="panel">
+                <br>
+                <div class="col-md-2 col-sm-3 text-center">
+                </div>
+            </div>
+            </div>
+            <div class="panel">
+                <div class="panel-body" infinite-scroll='tagPosts.nextPage()' infinite-scroll-disabled='tagPosts.isScrollDisabled()' infinite-scroll-distance='1'>
+
+
+                    <!--/stories-->
+                    <div class="row" ng-repeat='item in tagPosts.items | filter:{text:Page.query} '>
+                        <social-post></social-post>
+                    </div>
+                    <hr>
+
+                    <!--/stories-->
+
+                    <span ng-if="tagPosts.end">
+                        <a href="" class="btn btn-primary">No More Data</a>
+                    </span>
+
+
+
+                </div>
+            </div>
+
+
+
+        </div><!--/col-12-->
+    </div>
+</div>

@@ -17,6 +17,10 @@ acmeSocialApp.config(['$routeProvider',
                 templateUrl: 'app/view/author-detail.html',
                 controller: 'AuthorDetailController'
             }).
+            when('/tags/:tagId', {
+                templateUrl: 'app/view/tag-detail.html',
+                controller: 'TagDetailController'
+            }).
             when('/404', {
                 templateUrl: 'app/view/not-found.html',
                 controller: 'NotFoundController'
